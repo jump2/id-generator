@@ -88,3 +88,13 @@ func TestSnowflakeParallel(t *testing.T) {
 	}
 	fmt.Println("number of id:", set.Cardinality())
 }
+
+func BenchmarkGenerateId(b *testing.B) {
+	b.StopTimer()
+	sf := NewSnowflake(1, 1)
+
+	b.StartTimer()
+	for i := 0; i < b.N; i++ {
+		sf.NextId()
+	}
+}

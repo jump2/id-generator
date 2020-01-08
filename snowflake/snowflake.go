@@ -36,7 +36,7 @@ func (sf *snowflake) NextId() (uint64, error) {
 	if sf.elapsedTime == current {
 		sf.sequence = sf.nextSequence() & maskSequence
 		if sf.sequence == 0 {
-			time.Sleep(time.Microsecond * 1)
+			time.Sleep(time.Millisecond * 1)
 			sf.elapsedTime = currentElapsedTime()
 		}
 	} else {

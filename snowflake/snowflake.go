@@ -68,8 +68,8 @@ func NewSnowflake(dataCenterId uint8, workId uint8) *snowflake {
 }
 
 func currentElapsedTime() int64 {
-	microTime := time.Now().UnixNano()/1e6
-	return microTime - epoch
+	milliTime := time.Now().UnixNano()/1e6
+	return milliTime - epoch
 }
 
 func Decompose(uid uint64) map[string]uint64 {
